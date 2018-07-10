@@ -13,6 +13,7 @@ https://github.com/ianare/exif-py
 - What is EXIF data
 - Extract EXIF data from images
 - Process EXIF data
+- Analyse images
 
 #### Requirements
 
@@ -30,7 +31,7 @@ https://github.com/ianare/exif-py
 
 
 #### Setup
-Download the files from [Github](https://github.com/Juless89/eos-tutorials/tree/master/01). There are 4 files. The code is contained in `exif.py` the other 3 files are images which can be used to test the code on. `exif.py` takes 1 argument which is the filename for the image.
+Download the files from [Github](https://github.com/Juless89/python-tutorials/tree/master/EXIF). There are 6 files. The code is contained in `exif.py` the other 5 files are images which can be used to test the code on. `exif.py` takes 1 argument which is the filename for the image. In addition, the argument `analysis` is used to perform a model analysis on all the images.
 
 Run scripts as following:
 `> python exif.py 1.jpg`
@@ -104,8 +105,31 @@ def create_table(tags):
     print('</table>')
 ```
 
+#### Analyse images
+Imagine having a batch of images and you want to know which camera was used the most often. By looping through all the images, creating keys for unique camera models with a value indicating their frequency this can be easily answered.
+
+```
+def perform_analysis():
+    # Empty dict
+    camera_models = {}
+
+    # Loop through images 1-5.jpg
+    for image_num in range(1, 6):
+        filename = f'{image_num}.jpg'
+        # Extract str from the IfdTag
+        model = str(process_image(filename)['Image Model'])
+
+        # Fill dict with unique models and increase frequency
+        if model in camera_models:
+            camera_models[model] += 1
+        else:
+            camera_models[model] = 1
+
+    print(camera_models)
+```
+
 #### Running the code
-3 photos come with the code, running `exif.py` on each of them shows how useful `EXIF` data is when working with different cameras and different lenses.
+Five photos come with the code, running `exif.py` on the first three of them shows how useful `EXIF` data is when working with different cameras and different lenses.
 
 ---
 
@@ -152,8 +176,19 @@ python exif.py 3.jpg
 <tr><td>Lens</td><td><b>18.0-140.0 mm f/3.5-5.6</b></td></tr>
 <tr><td>Date</td><td><b>2018:05:11 01:46:48</b></td></tr>
 </table>
+<br>
+
+Using the argument `analysis` will perform the analysis, looping over all the images and counting which model camera where used with what frequency.
+
+```
+python exif.py analysis
+
+{'ILCE-7M3': 3, 'NIKON D7500': 1, 'NIKON D3400': 1}
+
+```
+
 ---
 
-The code for this tutorial can be found on [GitHub](https://github.com/Juless89/eos-tutorials/tree/master/01)!
+The code for this tutorial can be found on [Github](https://github.com/Juless89/python-tutorials/tree/master/EXIF)!
 
 This tutorial was written by @juliank.

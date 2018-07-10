@@ -32,11 +32,33 @@ def process_image(filename):
     return tags
 
 
+def perform_analysis():
+    # Empty dict
+    camera_models = {}
+
+    # Loop through images 1-5.jpg
+    for image_num in range(1, 6):
+        filename = f'{image_num}.jpg'
+        # Extract str from the IfdTag
+        model = str(process_image(filename)['Image Model'])
+
+        # Fill dict with unique models and increase frequency
+        if model in camera_models:
+            camera_models[model] += 1
+        else:
+            camera_models[model] = 1
+
+    print(camera_models)
+
+
 if __name__ == '__main__':
     # Filter and process command line arguments
     if len(sys.argv) == 2:
         filename = sys.argv[1]
-        tags = process_image(filename)
-        create_table(tags)
+        if filename == 'analysis':
+            perform_analysis()
+        else:
+            tags = process_image(filename)
+            create_table(tags)
     else:
         print('Requires 1 image filename as an argument')
