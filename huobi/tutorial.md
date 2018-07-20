@@ -1,4 +1,4 @@
-<center>![banner.png](https://cdn.steemitimages.com/DQmXUKa4wD5mekkSu2DesdjCwviNPrLYmLmVngcZfqcqRsy/banner.png)</center>
+<center>![banner.png](https://cdn-images-1.medium.com/max/1600/1*W3Lh17Km2be2NPIZAu5jbg.png)</center>
 
 This tutorial is part of a series where different aspects of programming with Python are explained, using Python and public libraries to make useful tools.
 
@@ -18,7 +18,7 @@ https://github.com/huobiapi/REST-Python3-demo
 #### Requirements
 
 - Python3.6
-- Huobi account
+- [Huobi account](https://www.huobi.com/en-us/)
 
 #### Difficulty
 
@@ -30,10 +30,10 @@ https://github.com/huobiapi/REST-Python3-demo
 
 #### Preface
 
-[Huobi](https://www.huobi.br.com/en-us/topic/invited/?invite_code=tz7n3) is a Chinese exchange that offers trading in `STEEM/USDT`. While their website offers decent translation to English, the API documentation is lacking a bit. `STEEM/USDT` is a useful pair that offers great stability. For example setting up a bot that automatically sells any incoming `STEEM` for `USDT`. The value of the `USDT` will not change.
+[Huobi](https://www.huobi.com/en-us/) is a Chinese exchange that offers trading in `STEEM/USDT`. While their website offers decent translation to English, the API documentation is lacking a bit. `STEEM/USDT` is a useful pair that offers great stability. For example setting up a bot that automatically sells any incoming `STEEM` for `USDT`. The value of the `USDT` will not change.
 
 #### Setup
-Download the files from [Github](https://github.com/Juless89/python-tutorials/tree/master/EXIF). There are 3 files. The code is contained in `auto_sell.py` the other 2 files are files from Huobi that contain their API code. `huobiservices.py` contains all the functions that allow for interaction with the exchange functionality. `utils.py` contains the required code to perform the API requests. In this file the API `ACCESS_KEY` and `SECRET_KEY` are set.
+Download the files from [Github](https://github.com/Juless89/python-tutorials/tree/master/huobi). There are 3 files. The code is contained in `auto_sell.py` the other 2 files are files from Huobi that contain their API code. `huobiservices.py` contains all the functions that allow for interaction with the exchange functionality. `utils.py` contains the required code to perform the API requests. In this file the API `ACCESS_KEY` and `SECRET_KEY` are set.
 
 Run scripts as following:
 `> python auto_sell.py`
@@ -41,7 +41,11 @@ Run scripts as following:
 #### Setting up your Huobi API keys
 In order to perform API requests with the Huobi exchange you need to set up an `API key` within your account. Go to `API Management` from the drop down menu which is found in the top right corner.
 
+<center>![Screenshot 2018-07-20 13.00.58.png](https://cdn.steemitimages.com/DQmYjApLMuKnMy7wfrYPM4mpgb2XKd6kUaxh6b4p1maNqRC/Screenshot%202018-07-20%2013.00.58.png)</center>
+
 Here you can create an `API key`. It is recommended to bind an IP address for added security. Keep in mind that an `API key` allows for full access to your exchange account. Including withdrawals.
+
+<center>![Screenshot 2018-07-20 13.01.13.png](https://cdn.steemitimages.com/DQmTXbz9o4jtVuHgowbVeJDdiBNmDgGi6Gg4V72rsuPD7pY/Screenshot%202018-07-20%2013.01.13.png)</center>
 
 #### Retrieving account balances
 The `get_balance()` function can be used to retrieve a full list of all the account's balances. Every response contains a `status` message and the `data` relevant to to the request.  Inside data there is a list that contains all the currencies and their balances. Each currency has two entries, the difference is their type: `trade` or `frozen`.
@@ -204,6 +208,9 @@ def run(self):
 
 Running the script allows for easy automated selling of `STEEM` for `USDT`. Whenever new `STEEM` gets deposited into the account it will be automatically sold after it reached a certain threshold.
 
+<center>![Screenshot 2018-07-20 13.51.26.png](https://cdn.steemitimages.com/DQmYe2X1D9YqZ1PKn1ipbz9wYd9mVp8AJgnrxUqmfGxJYH7/Screenshot%202018-07-20%2013.51.26.png)</center>
+
+
 ```
 python auto_sell.py
 STEEM/USDT: 1.4598 STEEM: 1.150 USDT: 74.17
@@ -219,6 +226,6 @@ STEEM/USDT: 1.4588 STEEM: 0.000 USDT: 75.84
 
 ---
 
-The code for this tutorial can be found on [Github](https://github.com/Juless89/python-tutorials/tree/master/EXIF)!
+The code for this tutorial can be found on [Github](https://github.com/Juless89/python-tutorials/tree/master/huobi)!
 
 This tutorial was written by @juliank.
